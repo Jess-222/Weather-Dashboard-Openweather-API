@@ -1,0 +1,16 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    width: 100%;
+    background: green;
+}
+
+header h1 {
+    margin: 0;
+    padding: 10px 0;
+    text-align: center;
+    color: white;
+}

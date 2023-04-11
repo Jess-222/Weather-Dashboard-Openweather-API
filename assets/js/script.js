@@ -15,6 +15,9 @@ function fetchCurrentWeather(city) {
     })
     .then((data) => {
         console.log(data);
+        var currentTemp = document.createElement("h4")
+        currentTemp.innerHTML = `Temp: ${data.main.temp}  &#176F`
+        currentCard.append(currentTemp)
     });
 };
 
@@ -23,3 +26,4 @@ searchBtn.addEventListener("click", function() {
     localStorage.setItem("city", JSON.stringify(city));
     fetchCurrentWeather(city);
 });
+
