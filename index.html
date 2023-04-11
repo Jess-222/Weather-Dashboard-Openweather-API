@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,8 +8,29 @@
     <link href="./assets/style/style.css">
     <title>Weather Dashboard</title>
 </head>
+
 <body>
-    
+    <main>
+        <!-- Search Section -->
+        <section class="search">
+            <input class="searchBar" placeholder="City..." />
+            <button class="searchBtn">Search</button>
+            <ul class="searchHistory"></ul>
+        </section>
+        <!-- Todays Forecast -->
+        <section class="currentForecast">
+            <div class="currentCard"></div>
+        </section>
+        <!-- 5 day Forecast -->
+        <section class="futureForecast">
+            <div class="forecastCard"></div>
+            <div class="forecastCard"></div>
+            <div class="forecastCard"></div>
+            <div class="forecastCard"></div>
+            <div class="forecastCard"></div>
+        </section>
+    </main>
     <script src="./assets/js/script.js"></script>
 </body>
+
 </html>
