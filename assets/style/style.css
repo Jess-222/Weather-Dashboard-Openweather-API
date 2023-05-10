@@ -1,9 +1,13 @@
-html, body {
+body {
     margin: 0;
-    padding: 0;
+    min-height: 100vh;
+    background: url("../IMG_3529.jpg");
+    background-repeat: repeat-y;
+    background-size: 100vw 100vh;
+    display: flex;
 }
 
-header {
+/* header {
     width: 100%;
     background: green;
 }
@@ -13,4 +17,4 @@ header h1 {
     padding: 10px 0;
     text-align: center;
     color: white;
-}
+} */
