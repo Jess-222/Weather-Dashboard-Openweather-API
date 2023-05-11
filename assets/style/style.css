@@ -13,6 +13,8 @@ aside {
     width: 30%;
     height: 100%;
     min-height: 100vh;
+    padding-top: 20px;
+    margin-left: 20px;
 }
 
 aside section {
@@ -20,8 +22,8 @@ aside section {
     align-items: center;
     width:95%;
     height: 95%;
-    background-color: aquamarine;
-    padding: 40px 0;
+    background-color: rgb(148, 224, 199);
+    padding: 30px 0;
     border-radius: 50pt;
 
 }
@@ -38,7 +40,7 @@ aside form {
     display: flex;
     min-height: 40px;
     width: 80%;
-    background-color: aquamarine;
+    background-color: rgb(148, 224, 199);
     border-radius: 50pt;
     border: 2px solid black;
 
@@ -58,6 +60,7 @@ form button {
     background-color: cadetblue;
     color:black;
     border-radius: 0 50pt 50pt 0;
+    /* margin-left: 30px; */
     
 }
 
@@ -70,6 +73,11 @@ main {
     min-height: 100vh;
 }
 
+h2 {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: rgb(148, 224, 199);
+    border-radius: 50pt;
+}
 
 #current {
     display: flex;
@@ -77,6 +85,8 @@ main {
     justify-content: center;
     align-items: center;
     height: 30%;
+    padding: 20px 200px 20px 200px;
+    margin: 20px;
 
 }
 
@@ -84,10 +94,12 @@ main {
     display: flex;
     align-items: center;
     height: 60%;
+    padding: 0px 250px 0px 250px;
+    margin: 20px;
 }
 
 #current, #forecast {
-    background-color: aquamarine;
+    background-color: rgb(148, 224, 199);
     border-radius: 50pt;
 }
 
