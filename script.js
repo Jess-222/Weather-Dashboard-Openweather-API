@@ -6,26 +6,6 @@ let searchHistory = document.getElementById("searchHistory");
 
 let APIKey = '6ed725886cc218c6ea1bf1fcf160a3de';
 
-// let cityName = "Pensacola";
-// let cityQuery =
-//     "https://api.openweathermap.org/data/2.5/weather?q=" +
-//     cityName +
-//     "&appid=" +
-//     APIKey;
-
-// let forecastQuery =
-//     "https://api.openweathermap.org/data/2.5/forecast?q=" +
-//     cityName +
-//     "&appid=" +
-//     APIKey;
-
-// fetch(cityQuery)
-//     .then(function (res) {
-//         return res.json();
-//     })
-//     .then(function (data) {
-//         console.log(data.list);
-//     });
 
 let storedSearches;
 
@@ -173,8 +153,8 @@ function renderForecast(data) {
 };
 
 function displayForecast(name) {
-    let forecastQuery = name;
-    let cityQuery =
+    let cityName = name;
+    let forecastQuery = 
         "https://api.openweathermap.org/data/2.5/forecast?q=" +
         cityName +
         "&units=imperial" +
