@@ -58,6 +58,7 @@ form button {
     background-color: cadetblue;
     color:black;
     border-radius: 0 50pt 50pt 0;
+    
 }
 
 main {
@@ -68,6 +69,7 @@ main {
     width: 80%;
     min-height: 100vh;
 }
+
 
 #current {
     display: flex;
@@ -89,14 +91,46 @@ main {
     border-radius: 50pt;
 }
 
-/* header {
-    width: 100%;
-    background: green;
+@media (max-width: 660px) {
+    #forecast {
+        flex-direction: column;
+    }
+    #forecast > div {
+        width: 50%;
+        margin-bottom: 30px;
+        padding: 20px 0;
+    }
+    #forecast > div:first-child {
+        margin-top: 30px;
+    }
 }
 
-header h1 {
-    margin: 0;
-    padding: 10px 0;
-    text-align: center;
-    color: white;
-} */
+@media (max-width: 900px) {
+    aside {
+        min-height: 40vh;
+        width: 100%;
+    }
+    main {
+        min-height: 40vh;
+        width: 100%;
+        justify-content: space-around;
+    }
+    main section {
+        margin: 10px 0;
+    }
+    #current, #forecast {
+        min-height: 30vh;
+    }
+    body {
+        flex-direction: column;
+    }
+    #current {
+        flex-direction: row;
+    }
+}
+
+@media (min-width: 900px) {
+    body {
+        flex-direction: row;
+    }
+}
