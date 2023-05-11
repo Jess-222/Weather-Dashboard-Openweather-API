@@ -3,7 +3,21 @@ let APIKey = '6ed725886cc218c6ea1bf1fcf160a3de';
 
 
 
+let cityName = "Pensacola";
+let cityQuery =
+"https://api.openweathermap.org/data/2.5/weather?q="+
+cityName +
+"&appid=" +
+APIkey;
 
+
+fetch(cityQuery)
+.then(function(res) {
+    return res.json();
+})
+.then(function(data) {
+        console.log(data);
+    });
 
 
 // var search = document.querySelector(".search");
