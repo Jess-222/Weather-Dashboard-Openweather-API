@@ -4,7 +4,7 @@ let current = document.getElementById("current");
 let forecast = document.getElementById("forecast");
 let searchHistory = document.getElementById("searchHistory");
 
-let APIKey = '6ed725886cc218c6ea1bf1fcf160a3de';
+let APIKey = "341aaf80a11931f9bf2fb6f0aac538b4";
 
 
 let storedSearches;
@@ -32,15 +32,20 @@ function getLocalStorage() {
 getLocalStorage();
 
 
+// current weather
 function renderCurrentWeather(data) {
     current.innerHTML = "";
-
     let name = document.createElement("div");
     name.textContent = data.name;
     current.append(name);
 
     let date = document.createElement("div");
-    date.textContent = new Date(data.dt * 1000).toLocaleTimeString("en-US", { weekday: "long", year: "numeric", month: "short", day: "numeric" });
+    date.textContent = new Date(data.dt * 1000).toLocaleTimeString("en-US", {
+        weekday: "long",
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+    });
     current.append(date);
 
     let temp = document.createElement("div");
@@ -56,11 +61,10 @@ function renderCurrentWeather(data) {
     current.append(windSpeed);
 
     let icon = document.createElement("img");
-    icon.src =
-        "https://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png";
+    icon.src = "https://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png";
     current.append(icon);
-
 };
+
 
 function displayCurrent(name) {
     let cityName = name;
@@ -84,14 +88,13 @@ function displayCurrent(name) {
         });
 };
 
-// 5 day forecast 
+
+// next 5 day forecast
 
 let forecastHigh = -100;
 let forecastLow = 200;
 let avgWindSpeed = 0;
 let avgHumidity = 0;
-
-//let forecastIconSrc;
 
 function renderForecast(data) {
     forecast.innerHTML = "";
@@ -112,12 +115,12 @@ function renderForecast(data) {
 
         avgWindSpeed = avgWindSpeed + data.list[i].wind.speed;
 
+
         if (infoIndex.includes(i)) {
             console.log("i", i);
-
             hiTemp = document.createElement("div");
             hiTemp.textContent = "High: " + parseInt(forecastHigh);
-            forecastCard.append(highTemp);
+            forecastCard.append(hiTemp);
             forecastHigh = -100;
 
             lowTemp = document.createElement("div");
@@ -133,7 +136,7 @@ function renderForecast(data) {
             windSpeed = document.createElement("div");
             windSpeed.textContent = "Wind: " + parseInt(avgWindSpeed / 8);
             forecastCard.append(windSpeed);
-            avgWindSpeed = 0;
+            forecastHigh = 0;
 
             forecastIcon.src =
                 "https://openweathermap.org/img/wn/" +
@@ -141,8 +144,8 @@ function renderForecast(data) {
                 "@2x.png";
             forecastCard.append(forecastIcon);
 
-            forecast.append(forecastCard);
 
+            forecast.append(forecastCard);
         }
     }
 };
