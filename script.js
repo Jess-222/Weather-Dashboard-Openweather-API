@@ -87,16 +87,11 @@ function displayCurrent(name) {
 // 5 day forecast 
 
 let forecastHigh = -100;
-
 let forecastLow = 200;
-
 let avgWindSpeed = 0;
-
 let avgHumidity = 0;
 
 //let forecastIconSrc;
-
-
 
 function renderForecast(data) {
     forecast.innerHTML = "";
@@ -109,7 +104,7 @@ function renderForecast(data) {
         if (data.list[i].main.temp_max > forecastHigh) {
             forecastHigh = data.list[i].main.temp_max
         }
-        if (data.list[i].main.temp_min > forecastLow) {
+        if (data.list[i].main.temp_min < forecastLow) {
             forecastLow = data.list[i].main.temp_min
         }
 
@@ -154,7 +149,7 @@ function renderForecast(data) {
 
 function displayForecast(name) {
     let cityName = name;
-    let forecastQuery = 
+    let forecastQuery =
         "https://api.openweathermap.org/data/2.5/forecast?q=" +
         cityName +
         "&units=imperial" +
