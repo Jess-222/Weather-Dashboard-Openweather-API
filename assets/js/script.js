@@ -3,21 +3,48 @@ let APIKey = '6ed725886cc218c6ea1bf1fcf160a3de';
 
 
 
-let cityName = "Pensacola";
-let cityQuery =
-"https://api.openweathermap.org/data/2.5/weather?q="+
-cityName +
-"&appid=" +
-APIkey;
+// let cityName = "Pensacola";
+// let cityQuery =
+//     "https://api.openweathermap.org/data/2.5/weather?q=" +
+//     cityName +
+//     "&appid=" +
+//     APIKey;
+
+let forecastQuery =
+    "https://api.openweathermap.org/data/2.5/forecast?q=" +
+    cityName +
+    "&appid=" +
+    APIKey;
 
 
 fetch(cityQuery)
-.then(function(res) {
-    return res.json();
-})
-.then(function(data) {
-        console.log(data);
+    .then(function (res) {
+        return res.json();
+    })
+    .then(function (data) {
+        console.log(data.list);
     });
+
+
+function displayCurrent() {
+    let cityName = "Pensacola";
+    let cityQuery =
+    "https://api.openweathermap.org/data/2.5/weather?q=" +
+    cityName +
+    "&appid=" +
+    APIKey;
+
+    fetch(cityQuery)
+    .then(function (res) {
+        return res.json();
+    })
+    .then(function (data) {
+        console.log(data.list);
+    })
+    .catch(function (err) {
+            console.log(err);
+        });
+    };
 
 
 // var search = document.querySelector(".search");

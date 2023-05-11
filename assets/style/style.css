@@ -60,6 +60,35 @@ form button {
     border-radius: 0 50pt 50pt 0;
 }
 
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+    min-height: 100vh;
+}
+
+#current {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 30%;
+
+}
+
+#forecast {
+    display: flex;
+    align-items: center;
+    height: 60%;
+}
+
+#current, #forecast {
+    background-color: aquamarine;
+    border-radius: 50pt;
+}
+
 /* header {
     width: 100%;
     background: green;
