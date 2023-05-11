@@ -45,7 +45,7 @@ function renderLocalStorage () {
     
     function getLocalStorage () {
         storedSearches = [];
-        storedSearches = JSON.parse(localStorage.getItem("searches")) || []; //------- ||= "or"
+        storedSearches = JSON.parse(localStorage.getItem("searches")) || []; 
         renderLocalStorage();
     }
     
@@ -53,6 +53,7 @@ function renderLocalStorage () {
 
 
 function renderCurrentWeather(data) {
+    current.innerHTML = "";
 
     let name = document.createElement("div");
     name.textContent = data.name;
@@ -79,7 +80,7 @@ function renderCurrentWeather(data) {
     "https://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png";
     current.append(icon);
 
-}
+};
 
 function displayCurrent(name) {
     let cityName = name;
@@ -103,6 +104,7 @@ function displayCurrent(name) {
         });
 };
 
+// 5 day forecast 
 
 let forecastHigh = -100;
 
@@ -112,12 +114,14 @@ let avgWindSpeed = 0;
 
 let avgHumidity = 0;
 
-let forecastIconSrc;
+//let forecastIconSrc;
 
 
 
 function renderForecast (data) {
+    forecast.innerHTML = "";
     let infoIndex = [7, 15, 23, 31, 39];
+
     for (let i = 0; i < data.list.length; i++) {
 let forecastCard = document.createElement("div");
 let forecastIcon = document.createElement("img");
@@ -137,29 +141,30 @@ if(infoIndex.includes(i)) {
     console.log("i", i);
 
     hiTemp = document.createElement("div");
-    hiTemp.textContent = "High: " + forecastHigh;
+    hiTemp.textContent = "High: " + parseInt(forecastHigh);
     forecastCard.append(highTemp);
     forecastHigh = -100;
 
     lowTemp = document.createElement("div");
-    lowTemp.textContent = "Low: " + forecastLow;
+    lowTemp.textContent = "Low: " + parseInt(forecastLow);
     forecastCard.append(lowTemp);
     forecastLow = 200;
 
     humidity = document.createElement("div");
-    humidity.textContent = "Humidity: " + avgHumidity;
+    humidity.textContent = "Humidity: " + parseInt(avgHumidity / 8);
     forecastCard.append(humidity);
     avgHumidity = 0;
 
     windSpeed = document.createElement("div");
-    windSpeed.textContent = "Wind: " + avgWindSpeed;
+    windSpeed.textContent = "Wind: " + parseInt(avgWindSpeed / 8);
     forecastCard.append(windSpeed);
     avgWindSpeed = 0;
 
-    hiTemp = document.createElement("div");
-    hiTemp.textContent = "High: " + forecastHigh;
-    forecastCard.append(hiTemp);
-    forecastHigh = -100;
+    forecastIcon.src = 
+    "https://openweathermap.org/img/wn/" +
+    data.list[i].weather[0].icon +
+    "@2x.png";
+    forecastCard.append(forecastIcon);
 
 }
       
@@ -194,38 +199,10 @@ function searchCity(e) {
     e.preventDefault();
     displayCurrent(searchInput.value);
     displayForecast(searchInput.value);
+    storedSearches.push(searchInput.value);
+    localStorage.setItem("search", JSON.stringify(storedSearches));
+    getLocalStorage();
 };
 
 
-searchForm.addEventListener("submit", searchCity)
-
-
-// var search = document.querySelector(".search");
-// var searchBar = document.querySelector(".searchBar");
-// var searchBtn = document.querySelector(".searchBtn");
-// var searchHistory = document.querySelector(".searchHistory");
-// var currentForecast = document.querySelector(".currentForecast");
-// var currentCard = document.querySelector(".currentCard");
-// var futureForecast = document.querySelector(".futureForecast");
-// var forecastCard = document.querySelector(".forecastCard");
-// var key = '6ed725886cc218c6ea1bf1fcf160a3de';
-
-// function fetchCurrentWeather(city) {
-//     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=imperial`)
-//     .then((res) => {
-//         return res.json();
-//     })
-//     .then((data) => {
-//         console.log(data);
-//         var currentTemp = document.createElement("h4")
-//         currentTemp.innerHTML = `Temp: ${data.main.temp}  &#176F`
-//         currentCard.append(currentTemp)
-//     });
-// };
-
-// searchBtn.addEventListener("click", function() {
-//     var city = searchBar.value;
-//     localStorage.setItem("city", JSON.stringify(city));
-//     fetchCurrentWeather(city);
-// });
-
+searchForm.addEventListener("submit", searchCity);
