@@ -6,9 +6,6 @@ let searchHistory = document.getElementById("searchHistory");
 
 let APIKey = '6ed725886cc218c6ea1bf1fcf160a3de';
 
-
-
-
 // let cityName = "Pensacola";
 // let cityQuery =
 //     "https://api.openweathermap.org/data/2.5/weather?q=" +
@@ -29,6 +26,31 @@ let APIKey = '6ed725886cc218c6ea1bf1fcf160a3de';
 //     .then(function (data) {
 //         console.log(data.list);
 //     });
+
+let storedSearches;
+
+function renderLocalStorage () {
+    searchHistory.innerHTML = "";
+
+    for (let i = 0; i < storedSearches.length; i++) {
+        let searchHistoryDiv = document.createElement("div");
+        searchHistoryDiv.className = "searchHistoryDiv";
+    
+        let searchHistoryBtn = document.createElement("button");
+        searchHistoryBtn.textContent = storedSearches[i];
+        searchHistoryDiv.append(searchHistoryBtn);
+        searchHistory.append(searchHistoryBtn);
+        }
+    }
+    
+    function getLocalStorage () {
+        storedSearches = [];
+        storedSearches = JSON.parse(localStorage.getItem("searches")) || []; //------- ||= "or"
+        renderLocalStorage();
+    }
+    
+    getLocalStorage();
+
 
 function renderCurrentWeather(data) {
 
